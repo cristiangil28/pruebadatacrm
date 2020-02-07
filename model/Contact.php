@@ -14,7 +14,6 @@ class Contact
         );
         $token = "";
         foreach ($data as $value) {
-            # code...
             $token .= $value["token"];
         }
         return $token;
@@ -61,8 +60,4 @@ class Contact
         }
         return $array_contacts;
     }
-}
-$c = new Contact();
-foreach ($c->getContacts() as $contact) {
-    echo $contact['contact_no'] . "\n";
 }
