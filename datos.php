@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <button onclick="cargarDatos()">Click</button>
+    <button onclick="cargarDatos()">Cargar Datos</button>
     <div ></div>
     <script>
         function cargarDatos() {
