@@ -39,7 +39,6 @@ class Contact
 
         // cerramos la sesión cURL
         curl_close($ch);
-
         $data_login = json_decode($remote_server_output, true);
         $session_name = "";
         foreach ($data_login as $value) {
@@ -59,5 +58,13 @@ class Contact
             $array_contacts = $contact;
         }
         return $array_contacts;
+    }
+
+    public function getTotalContacts(){
+        $numcontacts = json_decode(
+            file_get_contents("https://develop.datacrm.la/datacrm/pruebatecnica/webservice.php?operation=query&sessionName={$this->login()}&query=select%20count(*)%20from%20Contacts;"),
+            true
+        );
+        return $numcontacts;
     }
 }

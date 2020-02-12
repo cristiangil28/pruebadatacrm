@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,22 @@
 <body>
     <button onclick="cargarDatos()">Cargar Datos</button>
     <div ></div>
+    <button onclick="totalContactos()">Número de  Contactos</button>
+
+    <div ></div>
     <script>
+
+        function totalContactos(){
+            var div = document.getElementsByTagName("div")[1];
+            var total = document.createElement("p");
+            var arrayNumContacts = <?php echo json_encode($array['totalcontacts']); ?>;
+            console.log(arrayNumContacts.result[0].count);
+            for(let i = 0; i < arrayNumContacts.result.length; i++){
+                var textoencabezado2 =document.createTextNode ("el número de contactos es de : "+arrayNumContacts.result[i].count);
+            }
+            total.appendChild(textoencabezado2);
+            div.appendChild(total);
+        }
         function cargarDatos() {
             var body = document.getElementsByTagName("div")[0];
             // Crea un elemento <table> y un elemento <tbody>
@@ -35,7 +49,9 @@
             tblHead.appendChild(encabezado4);
             var tblBody = document.createElement("tbody");
             //obtenemos los datos que son enviados desde el controlador a la vista
-            var arrayJS = <?php echo json_encode($datos); ?>;
+            
+            var arrayJS = <?php echo json_encode($array['datos']); ?>;
+            
             for (let i = 0; i < arrayJS.length; i++) {
                 var hilera = document.createElement("tr");
                 var celda = document.createElement("td");
